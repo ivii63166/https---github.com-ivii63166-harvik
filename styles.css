@@ -119,6 +119,9 @@ main {
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    cursor: pointer;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .dropdown-trigger i {
@@ -231,6 +234,24 @@ main {
 
     .nav-contact {
         display: none;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: static;
+        opacity: 1;
+        transform: none;
+        pointer-events: auto;
+        transition: none;
+    }
+
+    .dropdown.active .dropdown-content {
+        display: block;
+    }
+
+    .dropdown-trigger {
+        width: 100%;
+        padding: 0.8rem 0;
     }
 }
 
@@ -406,7 +427,7 @@ main {
 
 .service-card i {
     font-size: 2.5rem;
-    color: var(--accent-color);
+    color: var(--accent-blue) !important;
     margin-bottom: 1rem;
 }
 
@@ -484,7 +505,11 @@ footer {
     transition: transform 0.3s ease, color 0.3s ease;
 }
 
-.social-links a:hover {
+.social-links i {
+    color: var(--accent-blue) !important;
+}
+
+social-links a:hover {
     transform: translateY(-5px);
     color: var(--accent-blue);
 }
@@ -677,3 +702,399 @@ footer {
 #careers .job-opening ul li {
     margin-bottom: 0.5rem;
 }
+
+/* About Page Styles */
+#about {
+    padding: 8rem 5% 5rem;
+    background: var(--light-bg);
+    color: var(--text-color);
+}
+
+#about .container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+#about h1 {
+    font-size: 3.5rem;
+    margin-bottom: 2rem;
+    color: var(--primary-dark);
+    text-align: center;
+    background: linear-gradient(45deg, var(--primary-dark), var(--accent-blue));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: fadeIn 1s ease;
+}
+
+#about h2 {
+    font-size: 2.2rem;
+    margin: 3rem 0 1.5rem;
+    color: var(--secondary-dark);
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+#about h2::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 60px;
+    height: 3px;
+    background: var(--accent-blue);
+}
+
+#about p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    color: var(--text-color);
+}
+
+#about .values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+#about .value-card {
+    background: var(--background-color);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+#about .value-card:hover {
+    transform: translateY(-5px);
+}
+
+#about .value-card i {
+    font-size: 2.5rem;
+    color: var(--accent-blue) !important;
+    margin-bottom: 1rem;
+}
+
+#about .value-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var (--primary-dark);
+}
+
+#about .value-card p {
+    font-size: 1rem;
+    margin: 0;
+}
+
+#about .cta-section {
+    text-align: center;
+    margin-top: 4rem;
+    padding: 3rem;
+    background: var(--primary-dark);
+    border-radius: 12px;
+    color: var(--text-lighter);
+}
+
+#about .cta-section p {
+    font-size: 1.5rem;
+    color: var(--text-lighter);
+    margin-bottom: 0;
+}
+
+/* Mobile Menu Button */
+.menu-toggle {
+    display: none;
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    color: var(--text-light);
+    cursor: pointer;
+    padding: 0.5rem;
+    z-index: 1000;
+}
+
+/* Responsive Design Updates */
+@media (max-width: 1200px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+        position: fixed;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        height: calc(100vh - 80px);
+        background: var(--primary-dark);
+        flex-direction: column;
+        padding: 2rem;
+        overflow-y: auto;
+        z-index: 999;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links a {
+        padding: 1rem;
+        width: 100%;
+        text-align: left;
+        font-size: 1.1rem;
+    }
+
+    .dropdown {
+        width: 100%;
+    }
+
+    .dropdown-content {
+        position: static;
+        background: rgba(17, 34, 64, 0.9);
+        width: 100%;
+        padding: 0;
+        box-shadow: none;
+        border: none;
+        display: none;
+    }
+
+    .dropdown.active .dropdown-content {
+        display: block;
+    }
+
+    .dropdown-trigger {
+        width: 100%;
+        justify-content: space-between;
+    }
+}
+
+/* 4K and Large Screen Support */
+@media (min-width: 2560px) {
+    .container {
+        max-width: 2000px;
+    }
+
+    html {
+        font-size: 18px;
+    }
+}
+
+/* Tablet Support */
+@media (min-width: 768px) and (max-width: 1199px) {
+    .container {
+        max-width: 90%;
+    }
+
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Common Mobile Fixes */
+@media (max-width: 767px) {
+    .container {
+        width: 95%;
+        padding: 1rem;
+    }
+
+    #about .values-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+}
+
+/* Touch Device Support */
+@media (hover: none) {
+    .dropdown-content {
+        display: none;
+    }
+
+    .dropdown.active .dropdown-content {
+        display: block;
+        opacity: 1;
+        transform: none;
+    }
+}
+/* Mobile Menu Button */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--accent-blue);
+    font-size: 1.8rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    z-index: 1001;
+    transition: transform 0.3s ease;
+}
+
+.menu-toggle:hover {
+    transform: scale(1.1);
+}
+
+/* Updated Mobile Navigation */
+@media (max-width: 1200px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+        position: fixed;
+        top: 80px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: var(--primary-dark);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 2rem;
+        overflow-y: auto;
+        z-index: 999;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links > * {
+        width: 100%;
+    }
+
+    .dropdown-content {
+        position: static;
+        width: 100%;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+        opacity: 1;
+        transform: none;
+        background: rgba(17, 34, 64, 0.95);
+    }
+
+    .dropdown.active .dropdown-content {
+        max-height: 1000px;
+    }
+
+    .dropdown-trigger {
+        width: 100%;
+        justify-content: space-between;
+        padding: 1rem 0;
+    }
+}
+
+/* Touch Device Support */
+@media (hover: none) {
+    .dropdown-content {
+        display: none;
+    }
+
+    .dropdown.active .dropdown-content {
+        display: block;
+    }
+
+    .nav-links a {
+        padding: 1rem 0;
+    }
+}
+
+/* 4K Screen Support */
+@media (min-width: 2560px) {
+    .container {
+        max-width: 2000px;
+    }
+
+    html {
+        font-size: 18px;
+    }
+}
+
+/* ...existing code... */
+
+.menu-toggle {
+    display: none;
+    background: transparent;
+    border: none;
+    color: var(--accent-blue);
+    font-size: 1.8rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    z-index: 1001;
+    transition: all 0.3s ease;
+}
+
+@media (max-width: 1200px) {
+    .menu-toggle {
+        display: block;
+        margin-right: 1rem;
+    }
+
+    .nav-links {
+        display: none;
+        position: fixed;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        height: calc(100vh - 80px);
+        background: var(--primary-dark);
+        flex-direction: column;
+        padding: 2rem;
+        overflow-y: auto;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+}
+
+/* Custom Icon Colors */
+.fa-car,
+.fa-car:before,
+.fa-automobile:before {
+    color: var(--accent-blue) !important; /* Using the accent-blue variable (#64ffda) */
+}
+
+/* Custom Icon Colors */
+.fas,
+.fab,
+.fa,
+.far {
+    color: var(--accent-blue) !important; /* #64ffda */
+}
+
+/* Service cards icons */
+.service-card i {
+    font-size: 2.5rem;
+    color: var(--accent-blue) !important;
+    margin-bottom: 1rem;
+}
+
+/* Value cards icons */
+.value-card i {
+    font-size: 2.5rem;
+    color: var(--accent-blue) !important;
+    margin-bottom: 1rem;
+}
+
+/* Footer social icons */
+.social-links i {
+    color: var(--accent-blue) !important;
+}
+
+/* Dropdown icons */
+.dropdown-trigger i {
+    color: var(--accent-blue) !important;
+}
+
+/* Menu toggle icon */
+.menu-toggle i {
+    color: var(--accent-blue) !important;
+}
+
+/* ...existing code... */
